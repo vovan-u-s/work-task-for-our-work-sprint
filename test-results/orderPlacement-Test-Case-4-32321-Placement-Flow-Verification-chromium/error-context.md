@@ -1,0 +1,89 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]:
+      - link "Website for automation practice" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img "Website for automation practice" [ref=e9]
+      - list [ref=e12]:
+        - listitem [ref=e13]:
+          - link " Home" [ref=e14] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e15]: 
+            - text: Home
+        - listitem [ref=e16]:
+          - link " Products" [ref=e17] [cursor=pointer]:
+            - /url: /products
+            - generic [ref=e18]: 
+            - text: Products
+        - listitem [ref=e19]:
+          - link " Cart" [ref=e20] [cursor=pointer]:
+            - /url: /view_cart
+            - generic [ref=e21]: 
+            - text: Cart
+        - listitem [ref=e22]:
+          - link " Signup / Login" [ref=e23] [cursor=pointer]:
+            - /url: /login
+            - generic [ref=e24]: 
+            - text: Signup / Login
+        - listitem [ref=e25]:
+          - link " Test Cases" [ref=e26] [cursor=pointer]:
+            - /url: /test_cases
+            - generic [ref=e27]: 
+            - text: Test Cases
+        - listitem [ref=e28]:
+          - link " API Testing" [ref=e29] [cursor=pointer]:
+            - /url: /api_list
+            - generic [ref=e30]: 
+            - text: API Testing
+        - listitem [ref=e31]:
+          - link " Video Tutorials" [ref=e32] [cursor=pointer]:
+            - /url: https://www.youtube.com/c/AutomationExercise
+            - generic [ref=e33]: 
+            - text: Video Tutorials
+        - listitem [ref=e34]:
+          - link " Contact us" [ref=e35] [cursor=pointer]:
+            - /url: /contact_us
+            - generic [ref=e36]: 
+            - text: Contact us
+  - generic [ref=e38]:
+    - list [ref=e40]:
+      - listitem [ref=e41]:
+        - link "Home" [ref=e42] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e43]: Shopping Cart
+    - paragraph [ref=e46]:
+      - text: Cart is empty! Click
+      - link "here" [ref=e47] [cursor=pointer]:
+        - /url: /products
+      - text: to buy products.
+  - contentinfo [ref=e48]:
+    - generic [ref=e53]:
+      - heading "Subscription" [level=2] [ref=e54]
+      - generic [ref=e55]:
+        - textbox "Your email address" [ref=e56]
+        - button "" [ref=e57] [cursor=pointer]:
+          - generic [ref=e58]: 
+        - paragraph [ref=e59]:
+          - text: Get the most recent updates from
+          - text: our site and be updated your self...
+    - paragraph [ref=e63]: Copyright © 2021 All rights reserved
+  - text: 
+  - insertion [ref=e64]:
+    - iframe [ref=e67]:
+      - iframe [ref=f1e1]:
+        - generic [active]:
+          - generic [ref=f2e1]:
+            - generic [ref=f2e2]:
+              - generic:
+                - img [ref=f2e6] [cursor=pointer]
+                - button [ref=f2e9] [cursor=pointer]:
+                  - img [ref=f2e10]
+            - insertion [ref=f2e17]:
+              - link "Advertisement" [ref=f2e20] [cursor=pointer]:
+                - /url: https://ad.doubleclick.net/pcs/click?xai=AKAOjstVIj_dZn2K0nMEWdTeRkUIIHafjMzs6-jgXMptHbre0D3WsreIWUj9tb0kc89fu8fM3MyXIGfJ_d5L0idP57z8fSbJS-yLDBMwLqFP8WJrBsf7c_Ja_Zn87KtHttB_vjH7GSoKRhoAVFOLiTq3g5a2v64zMkF8hpVQG7VB_8BeIersmCGCbASAKKg3iljjrZ8TBh4JUMKuQWaj96aZqAm04jEsoOx0mLsIVY6b0JH_ldZ5WuCKE0CNDUJ_hVwNZb4B2bQdsKElPUzifrqL3zq4IwIG73LZqQMzbeP86LC0CRm8k097wN6GX_qrW3ETlh9i9rOuhNz9GUHIYGc2tj3abOAlE-MBpwzySGJAdtXU_PwQS8Scb-7XVvAKgp9nWBbVjaE4qOWD9q84sDOezGeTpSNh7Qk5__Ky4GfprqhM3EMRxcbBPXR5iQRLOKj4gEVu5fL_1KCtpk3OyEVp-6u67aeVCP-BAI_PuEYPPKwHCS3iz3ybe5Pwlu_vkQ&sai=AMfl-YR5_ojVZgNeOjwSeftAZkazy0hjzyKFcDgIBqNcf44ah-ImwQeod5Q7C8YzX_DYDGc5nEDaGwCe39L3VarsUCb5MnNTqL-W_KHpab03xjd54MGBZD2W5HhstmJUH4fRcmVRxYCEAJZ4NqeBjg0My87mFvM2tUEE7faNp9oJciSYKtY1_u7aWit5EJywv-IvccETprtAg4i7cVoHqYsG3iH_jtBoaZO4qGZExn63EE2Djg&sig=Cg0ArKJSzPWl8_2m8hYz&cry=1&fbs_aeid=%5Bgw_fbsaeid%5D&crd=aHR0cHM6Ly9mb3huZXdzLmNvbQ&urlfix=1&adurl=https://googleads.g.doubleclick.net/dbm/clk%3Fsa%3DL%26ai%3DC48d8QF0Bab_zMciFodAP5NHb0QuC3aKBgwHr0a-63BT_9pi0yjwQASD9tJ6VAWDJho6I8KPsEqAB75mHwinIAQmoAwHIA5sEqgSCAk_QnIqXkxsjgTyK3xEDYAOzoblEy1ztKcSOCzgOjhi5gGg6omJJdjuymFTNNAT_usZzIuQYln6kW1g3QjMgZ7DI-80TQxLMAlB6Jnggjqp-Zud7WDKSblkEM_4DBY8oSHX79JnvRPR_C1px2Or7KRNDNoB5m4-3pxVLTbGBSbxAsvw6Ky3TK5Np3Vi_CuHO3PRVIGrVMsWKknEo_JbqlbZ_RsLK5P15efXC208_D7k4IlVnm4SfcuurycDXC8caO7GlUGOitmp3ETgi_oZ9p_Xlbr2XNHBmuBvLjaavLDcrhYu93qSvVXjJKAvtplRJy6YV4X587xeCKK0lDGLSdl0rTMAEhKPuxuwE4AQDiAW_ueqEUJAGAaAGTYAH79HXoQSoB6a-G6gHzM6xAqgH89EbqAeW2BuoB6qbsQKoB47OG6gHk9gbqAfw4BuoB-6WsQKoB_6esQKoB6--sQKoB9XJG6gH2baxAqgHmgaoB_-esQKoB9-fsQKoB_jCsQKoB_vCsQKoB-fXsQLYBwDSCC8IgGEQARifATIIioKAgICAgAg6DYBAgMCAgICAqIACqANIvf3BOlix0LeJkciQA4AKAZgLAcgLAYAMAaoNAlVT6g0TCPbM1omRyJADFchCCAQd5Og2uvANAYgOCbATjPX7HtATANgTDdgUAdAVAcoWAgoA-BYBgBcBshcCGAKyGAkSAr1SGE0iAQDQGQE%26ae%3D1%26num%3D1%26cid%3DCAQSoAEAwksa0TS4ctju4xkMzf1qyX4k1l1ITyTeit3P66GMi5VxCrIH8I-UfBlR1gYEsHRWDm06OAGjc0IlMRy1Q8VzBxPkJHbUpWH9EcJlJDg5yPNAnYVDRdk7uJLu_SXPwM_Kp9LT1487Rrk6xM3TrD5EhZyu-PKs15J6MolzlG5L4P03PK23fJS8DTlEGFOkOybzM_ey0pfWJk88Z_P2GjdpGAE%26sig%3DAOD64_21omGCf74asy26qnlljBus_-hniQ%26client%3Dca-pub-1677597403311019%26dbm_c%3DAKAmf-A0ESjhCsoJXwT6DaCc9YC2GxCDNYcWjE_ZP2TkkSN5vi0XpPVhEPw327PcvMtNmc5D-Y-42GpIW75bhxOL4gP_NUaN3mipPGyhYG1r_TgkIwmAge74TAj94vtvq0JHGAi5VUAD9ecwwjJjqiVoXXIhY5vTlnDF5uwZQJei81vARztgI3TIf91dZuQmqAi4iupZd3E31j5TtjEcCQMLl5R7QDqbNpdPxv28wyq3pICtrm2TYeER_FFmY-sC5F_WQ6M7U4KZNvoD0ihiemU9QAhvciKekazJtRGt9pwEMEHikEzKWEc%26cry%3D1%26dbm_d%3DAKAmf-A6K5yhYNWTegfrBU2G1ciG4oz4sqbJNlFL4XuCeBSuazcpedimbJCME9_0Qt--2lyQsKMYSjxiNfyBtj69y9WMgneUaWIunytqOvvJVw7GHvj0uhfaBnmqcN-2lUnI2Y8r6Tfk4aR54UjYPpmAZyI9Unk4ahgumpifnGZPM4MyGP3JyexC0jdp1A6y1mY9hyjAoGO2WpmGD1GELFROyRt6PA6WQawMZ401ksBptD_nR1pS9Dw8YKeczUIEK25lGQQkBqN8FWKaLHa2pEY2faAJmPzDVz05jLVaOpahE__JdhBzm6PVO7hBA2o5AqngZ3ABUDjOdrndf6ShccBun3T8-byPyUoIkBkhZrzb75phaGfo7BRmTiLBUzRfgqJ2Qm6BTxx2X41DZ1sb3WOMUPlATSBA6KFo_yLr0HkWzUVOe_RzlD9X78cmCEv6LAdE_iEEac5xx_WFJpUlZdAYcmnR0O2I4fHpF0Z2xIKvwi3xTMRNFGxBYubtiahayKNHllBYfRmdXwZcmfQALcabK3QMAg3K5eyF6O9FY0kpqNsR1K4UeQS8Lzih1JOf0v_rJlzxnbvcjhdHOb2TTUEVR40Keg8RlzbXZzMs0IQNcAxG9m7vXOQZjsln8GIGrizfcEx5pDkoVDvwOGHzHLkJscss6b5O-_NG91kX1H0V7fu6eWYUw-hJ0O8Gog4h1RqKwQUbq-Bcbd0gXbyK0brWJZS4yIa9jw%26adurl%3Dhttps://nation.foxnews.com/%253Fcmpid%253Dorg%253DNAT::ag%253Dpaid::mc%253DDisplay::src%253DMIQ::cmp%253DWantedDeadOrAlive::add%253DBanners%2526utm_source%253DDisplay%2526utm_medium%253DMIQ%2526utm_campaign%253DWantedDeadOrAlive%2526utm_content%253DBanners%2526dclid%253D%2525edclid!%2526gad_source%253D7
+                - img "Advertisement" [ref=f2e21]
+          - iframe
+```
