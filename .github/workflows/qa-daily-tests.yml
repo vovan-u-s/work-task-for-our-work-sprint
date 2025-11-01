@@ -1,0 +1,85 @@
+name: QA Environment - Daily Test Run
+
+on:
+  # Run daily at 2 AM UTC
+  schedule:
+    - cron: '0 2 * * *'
+  
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+  
+  # Run on push to qa branch
+  push:
+    branches:
+      - qa
+      - qa-test
+      - framework-Structure
+  
+  # Run on pull requests to qa
+  pull_request:
+    branches:
+      - qa
+
+jobs:
+  qa-test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps ${{ matrix.browser }}
+    
+    - name: Run Playwright tests on QA
+      run: npx playwright test --project=${{ matrix.browser }}
+      env:
+        CI: true
+        BASE_URL: https://qa.automationexercise.com
+        TEST_ENV: qa
+    
+    - name: Upload QA test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: qa-playwright-report-${{ matrix.browser }}
+        path: playwright-report/
+        retention-days: 30
+    
+    - name: Upload QA test traces
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: qa-playwright-traces-${{ matrix.browser }}
+        path: test-results/
+        retention-days: 30
+
+  notify-qa:
+    needs: qa-test
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Check QA test results
+      run: |
+        if [ "${{ needs.qa-test.result }}" == "failure" ]; then
+          echo "QA Tests failed!"
+          exit 1
+        else
+          echo "QA Tests passed successfully!"
+        fi

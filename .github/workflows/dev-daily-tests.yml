@@ -1,0 +1,87 @@
+name: Developer Environment - Daily Test Run
+
+on:
+  # Run daily at 3 AM UTC
+  schedule:
+    - cron: '0 3 * * *'
+  
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+  
+  # Run on push to dev branch
+  push:
+    branches:
+      - dev
+      - develop
+      - development
+      - framework-Structure
+  
+  # Run on pull requests to dev
+  pull_request:
+    branches:
+      - dev
+      - develop
+
+jobs:
+  dev-test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps ${{ matrix.browser }}
+    
+    - name: Run Playwright tests on DEV
+      run: npx playwright test --project=${{ matrix.browser }}
+      env:
+        CI: true
+        BASE_URL: https://dev.automationexercise.com
+        TEST_ENV: dev
+    
+    - name: Upload DEV test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: dev-playwright-report-${{ matrix.browser }}
+        path: playwright-report/
+        retention-days: 30
+    
+    - name: Upload DEV test traces
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: dev-playwright-traces-${{ matrix.browser }}
+        path: test-results/
+        retention-days: 30
+
+  notify-dev:
+    needs: dev-test
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Check DEV test results
+      run: |
+        if [ "${{ needs.dev-test.result }}" == "failure" ]; then
+          echo "DEV Tests failed!"
+          exit 1
+        else
+          echo "DEV Tests passed successfully!"
+        fi

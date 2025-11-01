@@ -11,7 +11,15 @@
     "test:headed": "npx playwright test --headed",
     "test:debug": "npx playwright test --debug",
     "test:ui": "npx playwright test --ui",
-    "test:report": "npx playwright show-report"
+    "test:report": "npx playwright show-report",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:ci": "npx playwright test --reporter=html,junit,json",
+    "test:parallel": "npx playwright test --workers=4",
+    "test:prod": "cross-env TEST_ENV=production npx playwright test",
+    "test:qa": "cross-env TEST_ENV=qa npx playwright test",
+    "test:dev": "cross-env TEST_ENV=dev npx playwright test"
   },
   "repository": {
     "type": "git",
@@ -26,6 +34,7 @@
   "homepage": "https://github.com/vovan-u-s/work-task-for-our-work-sprint#readme",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.2",
     "typescript": "^5.9.3"
   }
 }
