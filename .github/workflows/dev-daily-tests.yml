@@ -1,28 +1,29 @@
-name: Production Environment - Daily Test Run
+name: Developer Environment - Daily Test Run
 
 on:
-  # Run daily at 2 AM UTC
+  # Run daily at 3 AM UTC
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 3 * * *'
   
   # Allow manual trigger from GitHub UI
   workflow_dispatch:
   
-  # Run on push to main/master branch
+  # Run on push to dev branch
   push:
     branches:
-      - main
-      - master
+      - dev
+      - develop
+      - development
       - framework-Structure
   
-  # Run on pull requests
+  # Run on pull requests to dev
   pull_request:
     branches:
-      - main
-      - master
+      - dev
+      - develop
 
 jobs:
-  prod-test:
+  dev-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     
@@ -47,40 +48,40 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps ${{ matrix.browser }}
     
-    - name: Run Playwright tests on PRODUCTION
+    - name: Run Playwright tests on DEV
       run: npx playwright test --project=${{ matrix.browser }}
       env:
         CI: true
-        BASE_URL: https://automationexercise.com
-        TEST_ENV: production
+        BASE_URL: https://dev.automationexercise.com
+        TEST_ENV: dev
     
-    - name: Upload PRODUCTION test results
+    - name: Upload DEV test results
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: prod-playwright-report-${{ matrix.browser }}
+        name: dev-playwright-report-${{ matrix.browser }}
         path: playwright-report/
         retention-days: 30
     
-    - name: Upload PRODUCTION test traces
+    - name: Upload DEV test traces
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: prod-playwright-traces-${{ matrix.browser }}
+        name: dev-playwright-traces-${{ matrix.browser }}
         path: test-results/
         retention-days: 30
 
-  notify-prod:
-    needs: prod-test
+  notify-dev:
+    needs: dev-test
     runs-on: ubuntu-latest
     if: always()
     
     steps:
-    - name: Check PRODUCTION test results
+    - name: Check DEV test results
       run: |
-        if [ "${{ needs.prod-test.result }}" == "failure" ]; then
-          echo "PRODUCTION Tests failed!"
+        if [ "${{ needs.dev-test.result }}" == "failure" ]; then
+          echo "DEV Tests failed!"
           exit 1
         else
-          echo "PRODUCTION Tests passed successfully!"
+          echo "DEV Tests passed successfully!"
         fi

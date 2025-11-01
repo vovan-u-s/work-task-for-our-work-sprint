@@ -1,5 +1,22 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Get base URL from environment variable or use default
+const getBaseURL = () => {
+  if (process.env.BASE_URL) {
+    return process.env.BASE_URL;
+  }
+  
+  // Default URLs based on TEST_ENV
+  const testEnv = process.env.TEST_ENV || 'production';
+  const envUrls = {
+    production: 'https://automationexercise.com',
+    qa: 'https://qa.automationexercise.com',
+    dev: 'https://dev.automationexercise.com'
+  };
+  
+  return envUrls[testEnv as keyof typeof envUrls] || envUrls.production;
+};
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -15,7 +32,7 @@ export default defineConfig({
       ]
     : 'html',
   use: {
-    baseURL: 'https://automationexercise.com',
+    baseURL: getBaseURL(),
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

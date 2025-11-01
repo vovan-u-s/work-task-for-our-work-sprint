@@ -16,7 +16,10 @@
     "test:firefox": "npx playwright test --project=firefox",
     "test:webkit": "npx playwright test --project=webkit",
     "test:ci": "npx playwright test --reporter=html,junit,json",
-    "test:parallel": "npx playwright test --workers=4"
+    "test:parallel": "npx playwright test --workers=4",
+    "test:prod": "cross-env TEST_ENV=production npx playwright test",
+    "test:qa": "cross-env TEST_ENV=qa npx playwright test",
+    "test:dev": "cross-env TEST_ENV=dev npx playwright test"
   },
   "repository": {
     "type": "git",
