@@ -11,7 +11,12 @@
     "test:headed": "npx playwright test --headed",
     "test:debug": "npx playwright test --debug",
     "test:ui": "npx playwright test --ui",
-    "test:report": "npx playwright show-report"
+    "test:report": "npx playwright show-report",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:ci": "npx playwright test --reporter=html,junit,json",
+    "test:parallel": "npx playwright test --workers=4"
   },
   "repository": {
     "type": "git",
